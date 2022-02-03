@@ -1,24 +1,17 @@
-import React from 'react';
+import Card from './shared/Card';
+import PropTyeps from 'prop-types';
 
-// import use state
-import { useState } from 'react';
-
-function FeedbackItem() {
-	const [rating, setRating] = useState(0);
-	const [text, setText] = useState('Youre Great 🙌💕');
-
-	function addButtonEventFunc() {
-		setRating((prev) => {
-			return (prev += 1);
-		});
-	}
+function FeedbackItem(props) {
 	return (
-		<div className="card">
-			<div className="num-display">{rating}</div>
-			<div className="text-display">{text}</div>
-			<button onClick={addButtonEventFunc}>Rate</button>
-		</div>
+		<Card>
+			<div className="num-display">{props.feed.rating}</div>
+			<div className="text-display">{props.feed.text}</div>
+		</Card>
 	);
 }
+
+FeedbackItem.propTypes = {
+	feed: PropTyeps.object,
+};
 
 export default FeedbackItem;

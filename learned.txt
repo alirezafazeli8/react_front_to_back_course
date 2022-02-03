@@ -41,3 +41,11 @@ whats i learned in react
 - onClick event
 
 - prev value in set state
+
+- component children
+
+- conditional class
+
+- conditional style
+
+- filter array in proptypes
