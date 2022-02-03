@@ -27,3 +27,17 @@ whats i learned in react
 - PropType
 
 - adding styles in react
+
+- make style with props
+
+- hooks
+
+- states
+
+    - components base state 
+
+    - app level state
+
+- onClick event
+
+- prev value in set state
