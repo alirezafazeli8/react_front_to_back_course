@@ -6,7 +6,13 @@ function FeedbackLists(props) {
 	return (
 		<div className="feedback-list">
 			{props.feedback.map((feed) => {
-				return <FeedbackItem key={feed.id} feed={feed}></FeedbackItem>;
+				return (
+					<FeedbackItem
+						key={feed.id}
+						feed={feed}
+						handleClick={props.handleClick}
+					></FeedbackItem>
+				);
 			})}
 		</div>
 	);
