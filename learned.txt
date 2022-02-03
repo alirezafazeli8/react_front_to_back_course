@@ -1,0 +1,29 @@
+whats i learned in react
+
+- create react app (npx create-react-app project-name)
+
+- initial React
+
+- ReactDOM.render();
+
+- make simple components
+
+- JSX
+
+    - className
+
+    - dynamic lists and values
+
+    - key
+
+    - condition in jsx
+
+- React.createElement();
+
+- props
+
+- default props
+
+- PropType
+
+- adding styles in react
