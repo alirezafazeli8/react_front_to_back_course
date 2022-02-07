@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 function FeedbackStats(props) {
 	const showRating = function (feedback) {
-		if (feedback.length != 0) {
+		if (feedback.length !== 0) {
 			const average =
 				feedback.reduce((first, last) => {
 					return first + last.rating;

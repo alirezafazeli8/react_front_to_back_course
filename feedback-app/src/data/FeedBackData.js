@@ -2,7 +2,7 @@ const feedbackData = [
 	{
 		id: 1,
 		rating: 8,
-		text: 'Oh Thats Great, I Love You Man , wassup Bro 🐊🎳🌌',
+		text: 'hey guys my name is alrieza',
 	},
 	{
 		id: 2,
@@ -12,12 +12,12 @@ const feedbackData = [
 	{
 		id: 3,
 		rating: 10,
-		text: 'Oh Thats Great, I Love You Man , wassup Bro 🐊🎳🌌',
+		text: 'woooowwww how are you',
 	},
 	{
 		id: 4,
 		rating: 5,
-		text: 'Oh Thats Great, I Love You Man , wassup Bro 🐊🎳🌌',
+		text: 'fuck you mr cake',
 	},
 ];
 
