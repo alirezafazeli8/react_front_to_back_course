@@ -58,3 +58,13 @@ whats i learned in react
 - window.confrim()
 
 - PropTypes.node (node element type)
+
+- routher
+
+    - react-routher-dom library
+
+    - BrowserRouther
+
+    - Route
+
+    - (path - component - exact) props
