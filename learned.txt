@@ -56,3 +56,5 @@ whats i learned in react
 - react icons library
 
 - window.confrim()
+
+- PropTypes.node (node element type)
