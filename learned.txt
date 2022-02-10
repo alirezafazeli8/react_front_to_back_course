@@ -68,3 +68,7 @@ whats i learned in react
     - Route
 
     - (path - component - exact) props
+
+    - NavLink
+
+    - useParams
