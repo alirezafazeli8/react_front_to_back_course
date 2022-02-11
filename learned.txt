@@ -65,10 +65,20 @@ whats i learned in react
 
     - BrowserRouther
 
+    - Routes => this for using nested Route
+
     - Route
 
-    - (path - component - exact) props
+    - (path - element - exact) props
 
     - NavLink
 
     - useParams
+
+    - redirect page
+
+        - Navigate
+
+        - useNavigate (method)
+
+- nested routes
