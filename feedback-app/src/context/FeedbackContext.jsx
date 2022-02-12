@@ -18,7 +18,7 @@ const FeedbackProvider = ({children}) => {
         id: 4, rating: 5, text: 'fuck you mr cake',
     },])
 
-
+    // delete feedback
     function deleteFeedBack(id) {
         if (window.confirm('Are You Sure You Want Delete Your Feedback?')) {
             setFeedback(feedback.filter((item) => item.id !== id));
@@ -26,18 +26,32 @@ const FeedbackProvider = ({children}) => {
     }
 
 
+    // add feedback
     function addFeedBack(newFeedBack) {
         const newFeed = [{...newFeedBack, id: v4()}, ...feedback];
         setFeedback(newFeed);
     }
 
+    //edit feedback
     const editFeedBack = (item) => {
         setEditFeedBackVar({...item, edit: true})
     }
 
+    // update feedback
+    const updateFeedBack = (id, updateItem) => {
+        setFeedback(feedback.map(item => item.id === id ? {
+            ...item, ...updateItem
+        } : item))
+    }
+
 
     return (<FeedbackContext.Provider value={{
-        feedback, deleteFeedBack, addFeedBack, editFeedBack, editFeedBackVar
+        feedback,
+        addFeedBack,
+        deleteFeedBack,
+        editFeedBackVar,
+        editFeedBack,
+        updateFeedBack
 
     }}>
         {children}

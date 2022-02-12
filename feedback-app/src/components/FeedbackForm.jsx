@@ -10,7 +10,7 @@ function FeedbackForm() {
     const [lockBtn, setLockBtn] = useState(true);
     const [message, setMessage] = useState('');
     const [rating, setRating] = useState(10);
-    const {addFeedBack, editFeedBackVar} = useContext(FeedbackContext)
+    const {addFeedBack, editFeedBackVar, updateFeedBack} = useContext(FeedbackContext)
 
     useEffect(() => {
         if (editFeedBackVar && editFeedBackVar.edit) {
@@ -45,7 +45,13 @@ function FeedbackForm() {
                 text, rating,
             };
 
-            addFeedBack(newFeedbackObj);
+            if (editFeedBackVar.edit) {
+                //update feedback
+                updateFeedBack(editFeedBackVar.id, newFeedbackObj);
+            } else {
+                // add new feedback
+                addFeedBack(newFeedbackObj)
+            }
             setText('');
             setLockBtn(true);
         }

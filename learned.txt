@@ -88,3 +88,5 @@ whats i learned in react
 - useContext();
 
 - useEffect();
+
+- build project
