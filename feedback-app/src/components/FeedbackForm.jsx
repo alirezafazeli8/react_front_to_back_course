@@ -1,60 +1,69 @@
-import React, { useState } from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import Card from './shared/Card';
 import Buttons from './shared/Buttons';
 import SelectRating from './SelectRating';
+import {FeedbackContext} from "../context/FeedbackContext";
 
-function FeedbackForm({ addfeedback }) {
-	const [text, setText] = useState('');
-	const [lockBtn, setLockBtn] = useState(true);
-	const [message, setMessage] = useState('');
-	const [rating, setRating] = useState(10);
 
-	const inputEvent = (e) => {
-		setText(e.target.value.trim());
+function FeedbackForm() {
+    const [text, setText] = useState('');
+    const [lockBtn, setLockBtn] = useState(true);
+    const [message, setMessage] = useState('');
+    const [rating, setRating] = useState(10);
+    const {addFeedBack, editFeedBackVar} = useContext(FeedbackContext)
 
-		if (text.length < 10) {
-			setLockBtn(true);
-			setMessage('need more than 10 characters.');
-		} else {
-			setLockBtn(false);
-			setMessage('');
-		}
-	};
+    useEffect(() => {
+        if (editFeedBackVar && editFeedBackVar.edit) {
+            setLockBtn(false)
+            setText(editFeedBackVar.text)
+            setRating(editFeedBackVar.rating)
+        }
 
-	const selectFunc = (selectedValue) => {
-		setRating(selectedValue);
-	};
+    }, [editFeedBackVar])
 
-	const handleFormSubmit = (e) => {
-		e.preventDefault();
+    const inputEvent = (e) => {
+        setText(e.target.value.trim());
 
-		if (text.trim().length > 10) {
-			const newFeedbackObj = {
-				text,
-				rating,
-			};
+        if (text.length < 10) {
+            setLockBtn(true);
+            setMessage('need more than 10 characters.');
+        } else {
+            setLockBtn(false);
+            setMessage('');
+        }
+    };
 
-			addfeedback(newFeedbackObj);
-			setText('');
-			setLockBtn(true);
-		}
-	};
+    const selectFunc = (selectedValue) => {
+        setRating(selectedValue);
+    };
 
-	return (
-		<Card reverse={false}>
-			<form onSubmit={handleFormSubmit}>
-				<h2>pleas rate to us</h2>
+    const handleFormSubmit = (e) => {
+        e.preventDefault();
 
-				<SelectRating select={selectFunc}></SelectRating>
+        if (text.trim().length > 10) {
+            const newFeedbackObj = {
+                text, rating,
+            };
 
-				<div className="input-group">
-					<input type="text" onChange={inputEvent} value={text} />
-					<Buttons isDisabled={lockBtn}>Submit</Buttons>
-				</div>
-				<div className="message">{message}</div>
-			</form>
-		</Card>
-	);
+            addFeedBack(newFeedbackObj);
+            setText('');
+            setLockBtn(true);
+        }
+    };
+
+    return (<Card reverse={false}>
+        <form onSubmit={handleFormSubmit}>
+            <h2>pleas rate to us</h2>
+
+            <SelectRating select={selectFunc}></SelectRating>
+
+            <div className="input-group">
+                <input type="text" onChange={inputEvent} value={text}/>
+                <Buttons isDisabled={lockBtn}>Submit</Buttons>
+            </div>
+            <div className="message">{message}</div>
+        </form>
+    </Card>);
 }
 
 export default FeedbackForm;

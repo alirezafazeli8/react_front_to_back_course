@@ -1,78 +1,66 @@
 import React, {useState} from 'react';
 import Header from './components/Header';
-import feedbackData from './data/FeedBackData.js';
 import FeedbackLists from './components/FeedbackLists';
 import FeedbackStats from './components/FeedbackStats';
 import FeedbackForm from './components/FeedbackForm';
-import {v4} from 'uuid';
 import AboutPage from './pages/AboutPage';
 import {Routes, Route, Link, NavLink, Navigate, BrowserRouter} from 'react-router-dom';
 import NavLinks from "./components/shared/NavLinks";
 import {BsQuestionCircleFill} from 'react-icons/bs';
+import FeedbackProvider from "./context/FeedbackContext"
 
 export default function App() {
-    const [feedback, setFeedback] = useState(feedbackData);
+    return (
+        <FeedbackProvider>
+            <BrowserRouter>
 
-    function addFeedBack(newFeedBack) {
-        const newFeed = [{...newFeedBack, id: v4()}, ...feedback];
-        setFeedback(newFeed);
-    }
+                <Header/>
 
-    function deleteFeedBack(id) {
-        if (window.confirm('Are You Sure You Want Delete Your Feedback?')) {
-            setFeedback(feedback.filter((item) => item.id !== id));
-        }
-    }
+                <div className="container">
+                    <Routes>
 
-    return (<BrowserRouter>
-
-        <Header/>
-
-        <div className="container">
-            <Routes>
-
-                {/* home page */}
-                <Route
-                    path="/"
-                    element={<div>
-                        <FeedbackForm addfeedback={addFeedBack}/>
-                        <FeedbackStats feedback={feedback}/>
-                        <FeedbackLists
-                            feedback={feedback}
-                            handleClick={deleteFeedBack}
+                        {/* home page */}
+                        <Route
+                            path="/"
+                            element={<div>
+                                <FeedbackForm/>
+                                <FeedbackStats/>
+                                <FeedbackLists
+                                />
+                            </div>}
                         />
-                    </div>}
-                />
 
-                {/*about page*/}
-                <Route path="/about" element={<AboutPage/>}/>
+                        {/*about page*/}
+                        <Route path="/about" element={<AboutPage/>}/>
 
-            </Routes>
-        </div>
+                    </Routes>
+                </div>
 
-        {/*NavLInks*/}
-        <NavLinks>
-            {/*home page*/}
-            <NavLink to={"/"} className={isActive => {
-                return "nav__link " + " " + (isActive.isActive ? "active" : "noneSelect")
-            }}>
-                Home
-            </NavLink>
+                {/*NavLInks*/}
+                <NavLinks>
+                    {/*home page*/}
+                    <NavLink to={"/"} className={isActive => {
+                        return "nav__link " + " " + (isActive.isActive ? "active" : "noneSelect")
+                    }}>
+                        Home
+                    </NavLink>
 
-            {/*about page*/}
-            <NavLink to={"/about"} className={isActive => {
-                return "nav__link" + " " + (isActive.isActive ? "active" : "noneSelect")
-            }}>
-                About
-            </NavLink>
-        </NavLinks>
+                    {/*about page*/}
+                    <NavLink to={"/about"} className={isActive => {
+                        return "nav__link" + " " + (isActive.isActive ? "active" : "noneSelect")
+                    }}>
+                        About
+                    </NavLink>
+                </NavLinks>
 
-        {/*question icon*/}
-        <Link
-            to={'/about'}
-            className={"about_icon_link"}
-        >
-            <BsQuestionCircleFill size={"50"}/>
-        </Link>
-    </BrowserRouter>);
+                {/*question icon*/}
+                <Link
+                    to={'/about'}
+                    className={"about_icon_link"}
+                >
+                    <BsQuestionCircleFill size={"50"}/>
+                </Link>
+            </BrowserRouter>
+        </FeedbackProvider>
+    );
 }

@@ -16,7 +16,6 @@ function AboutPage() {
         >
             Back To Home{' '}
         </Link>
-        <Navigate to={"/"}/>
     </div>);
 }
 

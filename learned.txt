@@ -82,3 +82,9 @@ whats i learned in react
         - useNavigate (method)
 
 - nested routes
+
+- context & provider
+
+- useContext();
+
+- useEffect();
