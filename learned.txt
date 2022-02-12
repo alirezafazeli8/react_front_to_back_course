@@ -90,3 +90,13 @@ whats i learned in react
 - useEffect();
 
 - build project
+
+- serve library
+
+- HTTP methods (just theory)
+
+- HTTP status codes (just theory)
+
+- json server library
+
+- concurrently library
