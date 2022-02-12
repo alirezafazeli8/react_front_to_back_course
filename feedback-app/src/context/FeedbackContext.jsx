@@ -6,7 +6,6 @@ export const FeedbackContext = createContext();
 
 const FeedbackProvider = ({children}) => {
     const [editFeedBackVar, setEditFeedBackVar] = useState()
-    const [rating, setRating] = useState()
 
     const [feedback, setFeedback] = useState([{
         id: 1, rating: 8, text: 'hey guys my name is alrieza',
@@ -52,6 +51,7 @@ const FeedbackProvider = ({children}) => {
         editFeedBackVar,
         editFeedBack,
         updateFeedBack
+
 
     }}>
         {children}

@@ -45,9 +45,17 @@ function FeedbackForm() {
                 text, rating,
             };
 
-            if (editFeedBackVar.edit) {
+            if (editFeedBackVar && editFeedBackVar.edit) {
+                if (text.length < 10) {
+                    setLockBtn(true);
+                    setMessage('need more than 10 characters.');
+                } else {
+                    setLockBtn(false);
+                    setMessage('');
+                }
                 //update feedback
                 updateFeedBack(editFeedBackVar.id, newFeedbackObj);
+                setRating(10)
             } else {
                 // add new feedback
                 addFeedBack(newFeedbackObj)
@@ -65,7 +73,7 @@ function FeedbackForm() {
 
             <div className="input-group">
                 <input type="text" onChange={inputEvent} value={text}/>
-                <Buttons isDisabled={lockBtn}>Submit</Buttons>
+                <Buttons type={"submit"} isDisabled={lockBtn}>Submit</Buttons>
             </div>
             <div className="message">{message}</div>
         </form>

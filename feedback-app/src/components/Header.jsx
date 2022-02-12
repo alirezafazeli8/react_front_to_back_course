@@ -14,7 +14,7 @@ function Header(props) {
 
 // we set default props
 Header.defaultProps = {
-    title: 'Feedback UI - test',
+    title: 'Feedback UI',
     bgColor: 'rgba(0,0,0,0.4)',
     textColor: '#ff6a95',
 };
