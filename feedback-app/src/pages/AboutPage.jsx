@@ -1,6 +1,5 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {Navigate} from "react-router-dom";
 
 function AboutPage() {
     return (<div className="card" style={{textAlign: 'center'}}>

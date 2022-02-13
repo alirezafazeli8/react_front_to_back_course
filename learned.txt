@@ -102,3 +102,5 @@ whats i learned in react
 - concurrently library
 
 - spinner (css effect)
+
+- proxy api
