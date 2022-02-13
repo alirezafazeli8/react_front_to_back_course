@@ -1,4 +1,4 @@
-import {createContext, useState} from "react"
+import {createContext, useEffect, useState} from "react"
 import {v4} from "uuid";
 
 export const FeedbackContext = createContext();
@@ -6,16 +6,23 @@ export const FeedbackContext = createContext();
 
 const FeedbackProvider = ({children}) => {
     const [editFeedBackVar, setEditFeedBackVar] = useState()
+    const [isLoading, setLoading] = useState(true)
+    const [feedback, setFeedback] = useState([])
 
-    const [feedback, setFeedback] = useState([{
-        id: 1, rating: 8, text: 'hey guys my name is alrieza',
-    }, {
-        id: 2, rating: 2, text: 'Oh Thats Great, I Love You Man , wassup Bro 🐊🎳🌌',
-    }, {
-        id: 3, rating: 10, text: 'woooowwww how are you',
-    }, {
-        id: 4, rating: 5, text: 'fuck you mr cake',
-    },])
+
+    useEffect(() => {
+        fectchFeedBack()
+    }, [])
+
+
+    const fectchFeedBack = async () => {
+        const reponseData = await fetch("http://localhost:5000/feedback");
+        const data = await reponseData.json();
+
+        setFeedback(data)
+        setLoading(false)
+    }
+
 
     // delete feedback
     function deleteFeedBack(id) {
@@ -50,8 +57,8 @@ const FeedbackProvider = ({children}) => {
         deleteFeedBack,
         editFeedBackVar,
         editFeedBack,
-        updateFeedBack
-
+        updateFeedBack,
+        isLoading
 
     }}>
         {children}

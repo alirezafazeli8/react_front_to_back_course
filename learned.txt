@@ -100,3 +100,5 @@ whats i learned in react
 - json server library
 
 - concurrently library
+
+- spinner (css effect)
