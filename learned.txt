@@ -104,3 +104,7 @@ whats i learned in react
 - spinner (css effect)
 
 - proxy api
+
+- daisy ui
+
+- show Not Found Page
