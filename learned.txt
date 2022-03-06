@@ -108,3 +108,12 @@ whats i learned in react
 - daisy ui
 
 - show Not Found Page
+
+- env file
+
+- reducer
+
+- useReducer hooks 
+
+
+- urlSearhParam

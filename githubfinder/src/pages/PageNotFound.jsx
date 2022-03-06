@@ -12,7 +12,7 @@ function PageNotFound() {
 			</div>
 			<div>
 				<Link to={'/'} className="font-bold">
-					Back To Home
+					<div className="btn btn-active">Back To Home</div>
 				</Link>
 			</div>
 		</div>
