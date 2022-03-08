@@ -115,5 +115,6 @@ whats i learned in react
 
 - useReducer hooks 
 
-
 - urlSearhParam
+
+- useParams

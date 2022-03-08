@@ -13,6 +13,7 @@ export const GithubContextProvider = ({ children }) => {
 	const initialValue = {
 		users: [],
 		isLoading: false,
+		user: {},
 	};
 
 	// users reducer
@@ -41,6 +42,31 @@ export const GithubContextProvider = ({ children }) => {
 		});
 	};
 
+	const getUser = async (username) => {
+		dispatch({
+			type: 'IS_LOADING',
+			IS_LOADING: true,
+		});
+
+		const URL = `${GITHUB_URL}/users/${username}`;
+		const response = await fetch(URL, {
+			headers: {
+				'User-Agent': 'request',
+				Authorization: GITHUB_TOKEN,
+			},
+		});
+
+		if (response.status == 404) {
+			window.location = '/notfound';
+		} else {
+			const responseJson = await response.json();
+			dispatch({
+				type: 'GET_USER',
+				payload: responseJson,
+			});
+		}
+	};
+
 	return (
 		<GithubContext.Provider
 			value={{
@@ -48,6 +74,8 @@ export const GithubContextProvider = ({ children }) => {
 				users: usersState.users, // users
 				isLoading: usersState.isLoading, // is loading
 				dispatch,
+				getUser,
+				user: usersState.user,
 			}}
 		>
 			{children}

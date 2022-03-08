@@ -7,6 +7,13 @@ export const GithubReducer = (state, action) => {
 				isLoading: false,
 			};
 
+		case 'GET_USER':
+			return {
+				...state,
+				user: action.payload,
+				isLoading: false,
+			};
+
 		case 'IS_LOADING':
 			return {
 				...state,
@@ -15,6 +22,7 @@ export const GithubReducer = (state, action) => {
 
 		case 'RESET_USERS':
 			return {
+				// ...state,
 				users: [],
 				isLoading: false,
 			};
