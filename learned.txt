@@ -20,6 +20,13 @@ whats i learned in react
 
 - React.createElement();
 
+- file structures
+
+    components : 
+
+        srce -> components -> all components is here
+
+
 - props
 
 - default props
@@ -33,6 +40,8 @@ whats i learned in react
 - hooks
 
 - states
+
+    - prev value in state
 
     - components base state 
 
