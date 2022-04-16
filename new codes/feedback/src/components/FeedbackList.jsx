@@ -7,8 +7,6 @@ function FeedbackList({ feedback, handleDelete }) {
 		return <h2>Empty Feedback</h2>;
 	}
 
-	console.log(feedback);
-
 	return (
 		<div className="feedback-list">
 			{feedback.map((value, i) => {
