@@ -222,6 +222,8 @@ input:focus {
 
 .active {
 	color: #ff6a95;
+	padding: 5px;
+	text-decoration: none;
 }
 
 .noneSelect {

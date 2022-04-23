@@ -4,15 +4,9 @@ import PropTypes from 'prop-types';
 function FeedbackStats({ feedback }) {
 	// calculate average
 	const average =
-		feedback.length > 0
-			? feedback
-					.map((v) => {
-						return v.rate;
-					})
-					.reduce((first, last) => {
-						return first + last;
-					}) / feedback.length
-			: [];
+		feedback?.reduce((first, last) => {
+			return first + last.rate;
+		}, 0) / feedback.length;
 
 	return (
 		<div className="feedback-stats">
@@ -22,7 +16,7 @@ function FeedbackStats({ feedback }) {
 			</div>
 			{/* average */}
 			<div>
-				<h3>Average : {feedback.length > 0 ? average.toFixed(2) : 0}</h3>
+				<h3>Average : {!isNaN(average) ? average.toFixed(2) : 0}</h3>
 			</div>
 		</div>
 	);
