@@ -1,68 +1,81 @@
-import React, { useState, useContext } from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import Card from './shared/Card';
 import Button from './shared/Button';
 import FeedbackRating from './FeedbackRating';
 import FeedbackContext from '../context/FeedbackContext';
 
-function FeedbackForm({ addFeedback }) {
-	const [text, setText] = useState('');
-	const [disableButton, setDisableButton] = useState(true);
-	const [message, setMessage] = useState(false);
-	const [rating, setRating] = useState(10);
+function FeedbackForm() {
+    const [text, setText] = useState('');
+    const [disableButton, setDisableButton] = useState(true);
+    const [message, setMessage] = useState(false);
+    const [rating, setRating] = useState(10);
 
-	const { handleAddFeedback } = useContext(FeedbackContext);
+    const {handleAddFeedback, feedbackEdit, updateFeedback} = useContext(FeedbackContext);
 
-	function setTextEvent(e) {
-		setText(e.target.value.trim());
+    useEffect(() => {
+        if (feedbackEdit.edit === true) {
+            setDisableButton(false);
+            setText(feedbackEdit.item.text)
+            setRating(feedbackEdit.item.rate)
+        }
+    }, [feedbackEdit])
 
-		if (text.length < 10) {
-			setDisableButton(true);
-			setMessage(true);
-		} else {
-			setDisableButton(false);
-			setMessage(false);
-		}
-	}
+    function setTextEvent(e) {
+        setText(e.target.value.trim());
 
-	function handleSubmit(e) {
-		e.preventDefault();
+        if (text.length < 10) {
+            setDisableButton(true);
+            setMessage(true);
+        } else {
+            setDisableButton(false);
+            setMessage(false);
+        }
+    }
 
-		if (text.trim().length > 10) {
-			const newFeedback = {
-				rate: rating,
-				text,
-			};
+    function handleSubmit(e) {
+        e.preventDefault();
 
-			handleAddFeedback(newFeedback);
-			setText('');
-			setRating(10);
-		}
-	}
+        if (text.trim().length > 10) {
+            const newFeedback = {
+                rate: rating, text,
+            };
 
-	return (
-		<Card>
-			<form action="" onSubmit={handleSubmit}>
-				<h2>How Would You rate your service with us?</h2>
-				<FeedbackRating
-					rating={(rate) => {
-						setRating(rate);
-					}}
-				/>
-				<div className="input-group">
-					<input
-						onChange={setTextEvent}
-						type="text"
-						placeholder="write your feedback"
-						value={text}
-					/>
-					<Button isDisabled={disableButton} version="secondary">
-						Submit
-					</Button>
-				</div>
-				<div className="message">{message && 'You Must Type 10 chracters'}</div>
-			</form>
-		</Card>
-	);
+            if (feedbackEdit.edit === true) {
+                updateFeedback(feedbackEdit.item.id, newFeedback)
+                setText('');
+                setRating(10);
+            } else {
+                handleAddFeedback(newFeedback);
+                setText('');
+                setRating(10);
+            }
+
+
+        }
+    }
+
+    return (<Card>
+        <form action="" onSubmit={handleSubmit}>
+            <h2>How Would You rate your service with us?</h2>
+            <FeedbackRating
+                rating={(rate) => {
+                    setRating(rate)
+                } }
+            />
+            <div className="input-group">
+                <input
+                    onChange={setTextEvent}
+                    type="text"
+                    placeholder="write your feedback"
+                    value={text}
+                />
+                <Button isDisabled={disableButton} version="secondary">
+                    Submit
+                </Button>
+            </div>
+            <div className="message">{message && 'You Must Type 10 chracters'}</div>
+        </form>
+    </Card>);
 }
 
 export default FeedbackForm;
