@@ -127,3 +127,5 @@ whats i learned in react
 - urlSearhParam
 
 - useParams
+
+- props drilling
