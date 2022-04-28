@@ -1,18 +1,34 @@
-import {createContext, useState} from 'react';
+import {createContext, useState, useEffect} from 'react';
 import {v4} from 'uuid';
 
 const FeedbackContext = createContext();
 
 export function FeedbackProvider({children}) {
 
+    // set is loading
+    const [isLoading, setIsLoading] = useState(true)
+
     // all feedback is here
-    const [feedback, setFeedback] = useState([{
-        id: 1, text: 'hello', rate: 10,
-    }, {
-        id: 2, text: 'hello guys thats so nice', rate: 8,
-    }, {
-        id: 3, text: 'maybe good', rate: 7,
-    },]);
+    const [feedback, setFeedback] = useState([]);
+
+    // edit feedback state
+    const [feedbackEdit, setFeedbackEdit] = useState({
+        item: {}, edit: false,
+    })
+
+    //fetch data from server
+    useEffect(() => {
+        fetchFeedback()
+
+    }, []);
+
+    const fetchFeedback = async () => {
+        const response = await fetch("/feedback?_sort=id&_order=desc")
+        const json = await response.json()
+
+        setFeedback(json)
+        setIsLoading(false)
+    }
 
     // delete feedback item function
     function deleteFeedback(id) {
@@ -29,12 +45,6 @@ export function FeedbackProvider({children}) {
         // const newFeedbackObject =
         setFeedback([{...newFeedback, id: v4()}, ...feedback]);
     }
-
-
-    // edit feedback state
-    const [feedbackEdit, setFeedbackEdit] = useState({
-        item: {}, edit: false,
-    })
 
 
     // edit feedback function
@@ -67,6 +77,7 @@ export function FeedbackProvider({children}) {
         setFeedbackEdit,
         editFeedbackFunc,
         updateFeedback,
+        isLoading
     };
 
     return (<FeedbackContext.Provider value={value}>

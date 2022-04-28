@@ -32,7 +32,7 @@ function FeedbackForm() {
         }
     }
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault();
 
         if (text.trim().length > 10) {
@@ -41,11 +41,31 @@ function FeedbackForm() {
             };
 
             if (feedbackEdit.edit === true) {
-                updateFeedback(feedbackEdit.item.id, newFeedback)
+                updateFeedback(feedbackEdit.item.id, newFeedback);
+
+
+
                 setText('');
                 setRating(10);
+
+
             } else {
                 handleAddFeedback(newFeedback);
+
+
+
+                const rawResponse = await fetch('/feedback', {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({rate: rating, text})
+                });
+                const content = await rawResponse.json();
+
+                console.log(content);
+
                 setText('');
                 setRating(10);
             }
@@ -67,7 +87,6 @@ function FeedbackForm() {
                     onChange={setTextEvent}
                     type="text"
                     placeholder="write your feedback"
-                    value={text}
                 />
                 <Button isDisabled={disableButton} version="secondary">
                     Submit
