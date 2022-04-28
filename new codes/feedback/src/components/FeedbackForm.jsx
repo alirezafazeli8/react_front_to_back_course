@@ -87,12 +87,13 @@ function FeedbackForm() {
                     onChange={setTextEvent}
                     type="text"
                     placeholder="write your feedback"
+                    value={text}
                 />
                 <Button isDisabled={disableButton} version="secondary">
                     Submit
                 </Button>
             </div>
-            <div className="message">{message && 'You Must Type 10 chracters'}</div>
+            <div className="message">{message && 'You Must Type 10 characters'}</div>
         </form>
     </Card>);
 }

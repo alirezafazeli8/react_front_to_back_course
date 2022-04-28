@@ -31,8 +31,18 @@ export function FeedbackProvider({children}) {
     }
 
     // delete feedback item function
-    function deleteFeedback(id) {
+    async function deleteFeedback(id) {
         if (window.confirm('Are You Sure You Want Delete Feedback ?')) {
+
+            // delete data from server
+            await fetch(`/feedback/${id}/`, {
+                method: 'DELETE', headers: {
+                    'Content-Type': 'application/json'
+                },
+
+            })
+
+            // delete data from ui
             setFeedback(feedback.filter((v) => {
                 return v.id !== id;
             }));
@@ -56,9 +66,19 @@ export function FeedbackProvider({children}) {
     }
 
     // update feedback function
-    function updateFeedback(id, updItem) {
-        setFeedback(feedback.map((item) => {
+    async function updateFeedback(id, updItem) {
+        setFeedback(feedback.map(async (item) => {
             if (item.id === id) {
+
+                // await fetch(`/feedback/${id}/`, {
+                //     method: 'PUT',
+                //     headers: {
+                //         'Content-Type': 'application/json'
+                //     },
+                //     body: JSON.stringify({...updItem})
+                // })
+
+
                 return {...id, ...updItem}
             } else {
                 return item
@@ -69,15 +89,7 @@ export function FeedbackProvider({children}) {
 
     // all value for making Provider
     const value = {
-        feedback,
-        setFeedback,
-        deleteFeedback,
-        handleAddFeedback,
-        feedbackEdit,
-        setFeedbackEdit,
-        editFeedbackFunc,
-        updateFeedback,
-        isLoading
+        feedback, setFeedback, feedbackEdit, setFeedbackEdit, editFeedbackFunc, isLoading
     };
 
     return (<FeedbackContext.Provider value={value}>
