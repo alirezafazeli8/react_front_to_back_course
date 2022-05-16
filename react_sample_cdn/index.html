@@ -28,9 +28,29 @@
 		<script type="text/babel">
 			// banner component
 			const Banner = () => {
+				const welcomeMessage = 'Welcome to my website Guys';
+				const time = new Date().toDateString();
+				const link = 'https://google.com/';
+
+				// const handleClick = (e) => {
+				// 	console.log('click');
+				// 	console.log(e);
+				// };
+
 				return (
-					<div>
-						<p>Banner</p>
+					<div className="inner_banner">
+						<p>{welcomeMessage.toUpperCase()}</p>
+						<h2>{time}</h2>
+						<small>Random Number : {Math.random() * 20}</small>
+						<a href={link}>Google</a>
+
+						<button
+							onClick={() => {
+								console.log('you clicked me');
+							}}
+						>
+							Click Me !
+						</button>
 					</div>
 				);
 			};
