@@ -3,8 +3,10 @@ import "./App.css";
 import { useState } from "react";
 import Title from "./components/Title";
 import Modal from "./components/Modal";
+import EventList from "./components/EventList";
 
 function App() {
+	const [showModal, setShowModal] = useState(false);
 	const [showEvents, setShowEvents] = useState(true);
 	const [events, setEvents] = useState([
 		{
@@ -55,31 +57,32 @@ function App() {
 		</div>
 	);
 
+	const handleCloseModal = () => {
+		setShowModal(false);
+	};
+
 	return (
 		<div className="App">
 			<Title title={"hello im from app"} subtitle={subtitle} />
 
 			{buttonsComponent}
 
-			{showEvents &&
-				events.map((value, index) => (
-					<React.Fragment key={value.id}>
-						<small> {index}</small>- {value.title}
-						<br></br>
-						<button
-							onClick={() => {
-								handleDelete(value.id);
-							}}
-						>
-							delete
-						</button>
-					</React.Fragment>
-				))}
+			{showEvents && <EventList events={events} handleDelete={handleDelete} />}
 
-			<Modal>
-				<h2>We have 10% off</h2>
-				<p>use the Alireza code to checkout</p>
-			</Modal>
+			{showModal && (
+				<Modal handleCloseModal={handleCloseModal}>
+					<h2>We have 10% off</h2>
+					<p>use the Alireza code to checkout</p>
+				</Modal>
+			)}
+
+			<button
+				onClick={() => {
+					setShowModal(true);
+				}}
+			>
+				Show Modal
+			</button>
 		</div>
 	);
 }

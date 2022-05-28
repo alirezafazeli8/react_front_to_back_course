@@ -43,3 +43,9 @@ whats i learned in react
 - react fragments : 1- empty tag 2- React.fragments(); method
 
 - children props
+
+- functions as props
+
+- portals
+
+- ReactDOM.createPortal();
