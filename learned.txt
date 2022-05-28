@@ -8,6 +8,8 @@ whats i learned in react
 
 - make simple components
 
+- React.createElement();
+
 - JSX
 
     - className
@@ -18,114 +20,26 @@ whats i learned in react
 
     - condition in jsx
 
-- React.createElement();
+- event handler
 
-- file structures
+- using image
 
-    components : 
+-using style sheet
 
-        srce -> components -> all components is here
+- useState
 
+- how use state works
+
+- pervious state
+
+- conditional templates
+
+- useState limitation : The Hooks Must Use The Top level of component - must use inside of component
+
+- nested components
 
 - props
 
-- default props
+- react fragments : 1- empty tag 2- React.fragments(); method
 
-- PropType
-
-- adding styles in react
-
-- make style with props
-
-- hooks
-
-- states
-
-    - prev value in state
-
-    - components base state 
-
-    - app level state
-
-- onClick event
-
-- prev value in set state
-
-- children component 
-
-- conditional class
-
-- conditional style
-
-- filter array in propTypes (PropTypes.arrayOf)
-
-
-- filter object in propTypes (PropTypes.shape)
-
-- react icons library
-
-- window.confrim()
-
-- PropTypes.node (node element type)
-
-- routher
-
-    - react-routher-dom library
-
-    - BrowserRouther
-
-    - Routes => this for using nested Route
-
-    - Route
-
-    - (path - element - exact) props
-
-    - NavLink
-
-    - useParams
-
-    - redirect page
-
-        - Navigate
-
-        - useNavigate (method)
-
-- nested routes
-
-- context & provider
-
-- useContext();
-
-- useEffect();
-
-- build project
-
-- serve library
-
-- HTTP methods (just theory)
-
-- HTTP status codes (just theory)
-
-- json server library
-
-- concurrently library
-
-- spinner (css effect)
-
-- proxy api
-
-- daisy ui
-
-- show Not Found Page
-
-- env file
-
-- reducer
-
-- useReducer hooks 
-
-- urlSearchParam
-
-- useParams
-
-- props drilling
+- children props
