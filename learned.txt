@@ -49,3 +49,12 @@ whats i learned in react
 - portals
 
 - ReactDOM.createPortal();
+
+- Global Style sheet : all global things , should be here. and we should import it to index.js file.
+
+- component style sheet : specific for own component. : if we wanna use global style in component style but we don't manipulate of the global style first we should select the parent element of the component and select all global elements and now i can manipulate that.
+
+** Important : always select your target component in style sheet. maybe we wanna make another style with same class.
+
+
+- css modules : again notice we should have class and id for targeting the elements

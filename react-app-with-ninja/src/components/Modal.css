@@ -14,3 +14,11 @@
 	background-color: white;
 	border-radius: 10px;
 }
+
+.modal .btn--sale {
+	background-color: pink;
+}
+
+.modal .btn-none-sale {
+	background-color: blue;
+}

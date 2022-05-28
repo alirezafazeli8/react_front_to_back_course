@@ -7,7 +7,7 @@ import EventList from "./components/EventList";
 
 function App() {
 	const [showModal, setShowModal] = useState(false);
-	const [showEvents, setShowEvents] = useState(true);
+	const [showEvents, setShowEvents] = useState(false);
 	const [events, setEvents] = useState([
 		{
 			title: "hello this is mario from iran",
@@ -29,7 +29,7 @@ function App() {
 		});
 	}
 
-	const subtitle = "allhao akbar";
+	const subtitle = "This is fantastic subtitle";
 
 	const buttonsComponent = (
 		<div>
@@ -70,7 +70,7 @@ function App() {
 			{showEvents && <EventList events={events} handleDelete={handleDelete} />}
 
 			{showModal && (
-				<Modal handleCloseModal={handleCloseModal}>
+				<Modal handleCloseModal={handleCloseModal} isSalesMode={false}>
 					<h2>We have 10% off</h2>
 					<p>use the Alireza code to checkout</p>
 				</Modal>

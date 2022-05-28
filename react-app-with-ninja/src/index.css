@@ -5,6 +5,7 @@ body {
 		sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	background-color: beige;
 }
 
 code {
@@ -12,13 +13,23 @@ code {
 		monospace;
 }
 
-.title {
+button {
+	background-color: orange;
+	outline: none;
+	border: none;
 	padding: 20px;
-	font-weight: 500;
+	margin: 5px;
+	border-radius: 10px;
+	cursor: pointer;
 }
 
-.subtitle {
-	padding: 20px;
-	font-weight: 100;
-	color: gray;
+h1,
+h2,
+p {
+	font-weight: 100 !important;
+	margin: 5px;
+}
+
+div {
+	/* display: flex; */
 }
