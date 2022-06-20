@@ -3,6 +3,7 @@ import "./Modal.css";
 import ReactDOM from "react-dom";
 
 function Modal({ children, handleCloseModal, isSalesMode }) {
+	// create portal for moving the modal to outside the root
 	return ReactDOM.createPortal(
 		<div className="modal-backdrop">
 			<div
@@ -10,21 +11,23 @@ function Modal({ children, handleCloseModal, isSalesMode }) {
 				style={{
 					border: "solid black 1px",
 					textAlign: "center",
+					// condintional style
 					backgroundColor: isSalesMode ? "green" : "red",
 				}}
 			>
 				{children}
-				<button
+				{/* <button
 					onClick={() => {
-						handleCloseModal(false);
+						handleCloseModal(false); // handle close
 					}}
+					// close button
 					className={isSalesMode ? "btn--sale" : "btn-none-sale"}
 				>
 					Close
-				</button>
+				</button> */}
 			</div>
 		</div>,
-		document.body
+		document.getElementById("custom")
 	);
 }
 

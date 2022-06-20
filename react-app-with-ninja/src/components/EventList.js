@@ -2,15 +2,17 @@ import React from "react";
 import style from "./EventList.module.css";
 
 function EventList({ events, handleDelete }) {
-	// console.log(style);
-
+	// get styles from css module
 	const { card } = style;
 
 	return (
 		<>
+			{/* get the items from props */}
 			{events.map((value, index) => (
+				// create element of items
 				<div className={card} key={value.id}>
-					<small> {index + 1}</small> {value.title}
+					<small> {value.date}</small> - location : {value.location}{" "}
+					{value.title}
 					<br></br>
 					<button
 						onClick={() => {

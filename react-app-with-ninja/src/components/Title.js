@@ -1,5 +1,6 @@
 import "./Title.css";
 
+// title of project
 const Title = ({ title, subtitle }) => {
 	return (
 		<div className="title-backdrop card">

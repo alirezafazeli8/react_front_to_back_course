@@ -58,3 +58,10 @@ whats i learned in react
 
 
 - css modules : again notice we should have class and id for targeting the elements
+
+
+- onChange event
+
+- control input
+
+- useRef(); hook
