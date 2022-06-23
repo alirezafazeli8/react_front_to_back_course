@@ -1,0 +1,16 @@
+.task-input {
+	margin: 1rem;
+	/* width: 70% !important; */
+	text-align: center;
+	margin: auto;
+}
+
+.task-input input {
+	outline: none;
+	border: none;
+	padding: 1rem;
+	width: 70%;
+	margin: 1rem;
+	font-size: 1.5rem;
+	border-radius: 0.5rem;
+}

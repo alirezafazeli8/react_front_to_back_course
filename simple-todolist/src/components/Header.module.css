@@ -1,0 +1,13 @@
+.header {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	/* width: 50%; */
+	align-items: center;
+	margin: auto;
+	color: white;
+	font-weight: 100 !important;
+	background-color: #e74c3c;
+	padding: 2rem;
+	text-align: center;
+}

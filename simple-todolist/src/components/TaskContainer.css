@@ -1,0 +1,9 @@
+.task-container {
+	display: grid;
+	grid-template-columns: 25% 25% 25% 25%;
+	margin: auto;
+	width: 95%;
+	margin-top: 2rem;
+	text-align: center;
+	color: black;
+}
